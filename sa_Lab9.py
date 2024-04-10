@@ -5,6 +5,14 @@
 #
 
 
+def encode(unencoded_password):
+    encoded_password = ""
+    for char in unencoded_password:
+        old_digit = int(char)
+        new_digit = (int(char) + 3) % 10
+        encoded_password += str(new_digit)
+    return encoded_password
+
 def decode(encoded_passwd):
     """Decodes password by shifting numbers
     3 times back"""
@@ -14,7 +22,7 @@ def decode(encoded_passwd):
     for num in encoded_passwd:
         num = int(num)
         new_num = (num - 3) % 10
-        passwd += new_num
+        passwd += str(new_num)
 
     return passwd
 
@@ -25,8 +33,7 @@ def main():
     ------------------------
     1. Encode password
     2. Decode password
-    3. Print menu
-    4. Exit
+    3. Exit
     '''
     print(menu)
 
@@ -35,9 +42,9 @@ def main():
 
         # Option 1: Encode password
         if option == '1':
-            '''passwd = str(input('> Input password to encode: '))
+            passwd = str(input('> Input password to encode: '))
             result = encode(passwd)
-            print('[+] Encoded password: {}\n'.format(result))'''
+            print('[+] Encoded password: {}\n'.format(result))
 
             pass
 
@@ -48,9 +55,6 @@ def main():
             print('[+] Decoded password: {}'.format(result))
 
         elif option == '3':
-            print(menu)
-
-        elif option == '4':
             break
 
         else:
